@@ -74,7 +74,7 @@ The application should now be running at http://127.0.0.1:8000.
 
 API Endpoints
 1. User Registration<br/>
-Endpoint: POST /api/user-registration<br/>
+Endpoint: POST /api/user/store<br/>
 Description: Registers a new user.
 Request Body:
 json
