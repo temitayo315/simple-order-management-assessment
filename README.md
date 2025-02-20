@@ -49,7 +49,7 @@ dotenv
 DB_CONNECTION=mysql<br/>
 DB_HOST=127.0.0.1<br/>
 DB_PORT=3306<br/>
-DB_DATABASE=transaction-processing<br/>
+DB_DATABASE=order-management<br/>
 DB_USERNAME=your_username<br/>
 DB_PASSWORD=your_password<br/>
 
