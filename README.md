@@ -109,27 +109,6 @@ Headers: Authorization: Bearer {access_token}
 Response:
 json
 
-
-## Running Tests
-This project includes feature tests to verify the functionality and correctness of the system.
-
-1. Configure Test Database
-Edit the .env.testing file to set up a test database (for SQLite, you can use an in-memory database):
-
-dotenv
-DB_CONNECTION=sqlite<br/>
-DB_DATABASE=:memory:<br/>
-
-2. Run Tests<br/>
-Run the following command to execute all tests:
-
-`php artisan test`
-<b>Key Test Cases</b>
-- User Registration: Verifies that users can register and log in.<br/>
-- Authentication: Ensures only authenticated users can access transaction and balance endpoints.<br/>
-- Transaction Processing: Tests both deposit and withdrawal functionality, ensuring correct balance updates.<br/>
-- Balance Retrieval: Ensures that the correct balance is returned for each user.<br/>
-
 ## Scaling and Production Considerations
 For a production setup and scalability improvements, consider the following:
 <ol>
