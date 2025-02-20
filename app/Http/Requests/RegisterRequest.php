@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class RegisterRequest extends FormRequest
 {
@@ -26,5 +28,21 @@ class RegisterRequest extends FormRequest
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:6',
         ];
+    }
+
+    /**
+     *  Send validation error response back to HTTP
+    */
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = $validator->errors();
+ 
+        $response = response()->json([
+            'status' => 'error',
+            'message' => 'Invalid data send',
+            'errors' => $errors->messages(),
+        ], 422);
+ 
+        throw new HttpResponseException($response);
     }
 }

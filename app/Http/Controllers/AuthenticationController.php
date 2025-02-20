@@ -10,15 +10,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Password;
+use App\Services\UserService;
 
 class AuthenticationController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        if ($request->fails()) {
-            return response()->json(['errors' => $request->errors()], 422);
-        }
-
         $user = (new UserService())->storeUser($request);
         $token = JWTAuth::fromUser($user);
         return response()->json(['token' => $token, 'user' => $user], 201);
@@ -29,7 +26,7 @@ class AuthenticationController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Unauthorized!Wrong Username or Password'], 401);
         }
 
         return response()->json(['token' => $token]);
