@@ -31,4 +31,6 @@ Route::middleware(['jwt.auth'])->group(function () {
         Route::put('update/{product}', 'update');
         Route::delete('delete/{product}', 'destroy');
     });
+    Route::post('logout', [AuthenticationController::class, 'logout']);
+    Route::post('reset-password', [AuthenticationController::class, 'passwordResetRequest']);
 });
